@@ -1,6 +1,4 @@
 import React, { useState, useRef } from 'react'
-import emailjs from '@emailjs/browser'
-import validator from 'validator'
 import { Header, Alert, PricePlans } from '../../components'
 import { data } from '../../constants'
 import helpSendEmail from '../../helpers/EmailHelper'
@@ -41,9 +39,10 @@ const Contact = () => {
     const formData = new FormData(form.current);
     const userName = formData.get('user_name');
     const userEmail = formData.get('user_email');
+    const userPhone = formData.get('user_phone');
     const message = formData.get('message');
 
-    let response = await helpSendEmail(userName, userEmail, message);
+    let response = await helpSendEmail(userName, userEmail, userPhone, message);
 
     if (response === 'Success') {
       e.target.reset();
@@ -92,6 +91,8 @@ const Contact = () => {
               <input className='border-2 rounded-md' type="text" name="user_name" required />
               <label className='py-2 font-medium'>Email</label>
               <input className='border-2 rounded-md' type="email" name="user_email" ref={emailRef} required />
+              <label className='py-2 font-medium'>Phone</label>
+              <input className='border-2 rounded-md' type="phone" name="user_phone" required />              
               <label className='py-2 font-medium'>Message</label>
               <textarea className='min-h-40 border-2 rounded-md p-2' name="message" required />
               <button
