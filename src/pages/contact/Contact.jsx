@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Header, Alert, PricePlans } from '../../components'
+import { PopupButton } from "react-calendly";
 import { data } from '../../constants'
 import helpSendEmail from '../../helpers/EmailHelper'
 import shortid from 'shortid'
@@ -16,6 +17,7 @@ const Contact = () => {
   const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
+  const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL;
 
   const setAlert = (severity, message) => {
     setAlertState(true);
@@ -92,18 +94,33 @@ const Contact = () => {
               <label className='py-2 font-medium'>Email</label>
               <input className='border-2 rounded-md' type="email" name="user_email" ref={emailRef} required />
               <label className='py-2 font-medium'>Phone</label>
-              <input className='border-2 rounded-md' type="phone" name="user_phone" required />              
+              <input className='border-2 rounded-md' type="phone" name="user_phone" required />
               <label className='py-2 font-medium'>Message</label>
               <textarea className='min-h-40 border-2 rounded-md p-2' name="message" required />
-              <button
-                className="self-center bg-accent-dark-500 hover:bg-accent-dark-300
+              <div className='flex flex-row items-center justify-center gap-8'>
+                <button
+                  className="self-center bg-accent-dark-500 hover:bg-accent-dark-300
                 text-white font-bold mt-4 py-2 px-4 
                 border accent-dark-900 rounded"
-                type="submit"
-                value="Send"
-                disabled={sending}>
-                Send Email
-              </button>
+                  type="submit"
+                  value="Send"
+                  disabled={sending}>
+                  Send an Email!
+                </button>
+                <span className='font-semibold italic pt-4'>-- OR --</span>
+                <PopupButton
+                  url={CALENDLY_URL}
+                  /*
+                  * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
+                  * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
+                  */
+                  rootElement={document.getElementById("root")}
+                  text="Click to Schedule!"
+                  className="self-center bg-accent-dark-500 hover:bg-accent-dark-300
+               text-white font-bold mt-4 py-2 px-4 
+               border accent-dark-900 rounded"
+                />
+              </div>
             </form>
           </div>
         </div>
