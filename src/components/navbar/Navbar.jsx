@@ -7,7 +7,7 @@ import shortid from 'shortid'
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth); // Initialize with current width
 
   const toggleClick = () => setClick(!click);
 
@@ -34,28 +34,32 @@ const Navbar = () => {
 
   useEffect(() => {
     function captureWindowWidth() {
-      setWindowWidth(window.innerWidth)
+      setWindowWidth(window.innerWidth);
       // console.log(window.innerHeight, window.innerWidth)
     }
 
+    // Capture width on initial render
+    captureWindowWidth();
+
     // Trigger this function on resize
-    window.addEventListener('resize', captureWindowWidth)
-    //  Cleanup for componentWillUnmount
-    return () => window.removeEventListener('resize', captureWindowWidth)
-  }, [])
+    window.addEventListener('resize', captureWindowWidth);
+
+    // Cleanup for componentWillUnmount
+    return () => window.removeEventListener('resize', captureWindowWidth);
+  }, []);
 
   return (
     <nav className='sticky top-0 z-50 bg-gradient-to-r
-    from-accent-light-500 to-accent-dark-500'>
+    from-accent-dark-500 to-accent-dark-800'>
       <div className='h-10vh flex justify-between text-white
       lg:py-5 py-4 px-20 border-accent-dark-800'>
         <div className='flex items-center flex-1'>
           <img src='/favicon-32x32.png' className="size-8" />
-          <span className='text-3xl font-bold ml-8 text-white font-sans'>
-            {(windowWidth > 900) ? `${data.contactMe.full_name} ` : `${data.contactMe.name_short}`}
+          <span className='text-3xl font-bold ml-8 text-white font-serif'>
+            {(windowWidth > 600) ? `${data.companyName.name_long} ` : `${data.companyName.name_short}`}
           </span>
         </div>
-        <div className='lg:flex md:flex lg:flex-1 justify-end font-normal hidden'>
+        <div className='lg:flex lg:flex-1 justify-end font-normal hidden'>
           <div className='flex-10'>
             <ul className='flex gap-8 mr-16 text-[18px]'>
               {data.navlinks.map((navlink) => (
@@ -63,8 +67,8 @@ const Navbar = () => {
                   to={navlink.link_to}
                   key={shortid.generate()}
                 >
-                  <li className='hover:text-black hover:border-b-2 
-                  hover:border-accent-dark-600                  
+                  <li className='hover:text-accent-light-800 hover:border-b-2 
+                  hover:border-accent-light-500                  
                   transition cursor-pointer font-serif'>
                     {navlink.link_title}
                   </li>
@@ -76,7 +80,7 @@ const Navbar = () => {
         <div>
           {click && popup}
         </div>
-        <button className='block md:hidden transition' onClick={toggleClick}>
+        <button className='block lg:hidden transition' onClick={toggleClick}>
           {click ? <FaTimes /> : <GiHamburgerMenu />}
         </button>
       </div>

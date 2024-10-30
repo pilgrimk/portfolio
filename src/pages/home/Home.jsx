@@ -15,8 +15,8 @@ const Home = () => {
         <div
           id='title-box'
           className='absolute top-[55%] transform -translate-y-1/2 bg-accent-light-800 w-4/5 max-w-[1000px] rounded-md p-4'
-          // className='absolute top-[55%] right-0 transform -translate-y-1/2 translate-x-[0%] bg-accent-light-800 w-4/5 max-w-[1200px] rounded-md p-4'
-          >
+        // className='absolute top-[55%] right-0 transform -translate-y-1/2 translate-x-[0%] bg-accent-light-800 w-4/5 max-w-[1200px] rounded-md p-4'
+        >
           <div className='w-full flex flex-col items-center justify-center'>
             <div>
               <h1 className='text-4xl text-white p-4 italic underline font-serif'>
@@ -25,22 +25,32 @@ const Home = () => {
               <h2 className='text-xl text-white p-4'>
                 {data.heroSection.subtitle}
               </h2>
+              <p className='text-white p-4'>
+                {data.heroSection.desc}
+              </p>
             </div>
           </div>
           <div className='w-full flex flex-row items-center justify-center pb-8 gap-6'>
-            <button 
-                onClick={() => handleNavigate('/contact')}
-                className='bg-accent-dark-500 hover:bg-accent-dark-300
+            <button
+              onClick={() => handleNavigate('/automations')}
+              className='bg-accent-dark-500 hover:bg-accent-dark-300
                 text-white font-bold mt-4 py-2 px-4 
                 border accent-dark-900 rounded'>
-              Hire Me
+              Automations
             </button>
-            <button 
-                onClick={() => handleNavigate('/projects')}
-                className='bg-accent-dark-500 hover:bg-accent-dark-300
+            <button
+              onClick={() => handleNavigate('/websites')}
+              className='bg-accent-dark-500 hover:bg-accent-dark-300
                 text-white font-bold mt-4 py-2 px-4 
                 border accent-dark-900 rounded'>
-              Projects
+              Websites
+            </button>
+            <button
+              onClick={() => handleNavigate('/contact')}
+              className='bg-accent-dark-500 hover:bg-accent-dark-300
+                text-white font-bold mt-4 py-2 px-4 
+                border accent-dark-900 rounded'>
+              Contact Us
             </button>
           </div>
         </div>

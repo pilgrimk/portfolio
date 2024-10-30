@@ -5,6 +5,7 @@ import movies_preview_app from '../assets/movies-preview-app.jpg'
 import home_service_groups from '../assets/home-service-groups.jpg'
 import dogs_playing from '../assets/dogs-playing.jpg'
 import gericht from '../assets/gericht.jpg'
+import epik_mill_and_cabinet from '../assets/epik-mill-and-cabinet.jpg'
 import css_construction_llc from '../assets/css-construction-llc.jpg'
 import peak_performance from '../assets/faith-peak-performance.jpg'
 import kiss_analog from '../assets/kiss-analog.jpg'
@@ -43,6 +44,7 @@ const images = {
     home_service_groups,
     dogs_playing,
     gericht,
+    epik_mill_and_cabinet,
     css_construction_llc,
     peak_performance,
     kiss_analog,

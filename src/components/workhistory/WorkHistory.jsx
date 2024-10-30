@@ -4,7 +4,7 @@ import shortid from 'shortid'
 const WorkHistory = ({ work_info }) => {
   return (
     <div className='w-full rounded-xl overflow-hidden bg-gradient-to-r from-accent-light-50 to-accent-light-100 p-10'>
-      <h1 className='text-1xl sm:text-2xl italic'>
+      <h1 className='text-lg md:text-2xl italic m-2'>
         {work_info.title}
       </h1>
       <table className="table-auto">

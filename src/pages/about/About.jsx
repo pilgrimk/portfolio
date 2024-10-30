@@ -10,12 +10,12 @@ const About = () => {
       <div className='w-full flex items-center justify-center overflow-hidden'>
         <div className='max-w-5xl flex flex-col'>
           <div className='w-full flex flex-col md:flex-row items-center
-        md:space-x-8 bg-accent-light-50 rounded-md p-4'>
+        md:space-x-8 rounded-md p-4'>
             <div className='w-96 h-96'>
               <Carousel images={images.gallery_pics} />
             </div>
             <div className='w-full flex flex-col mt-4 p-2 md:p-0'>
-              <h1 className='text-2xl italic p-2'>
+              <h1 className='text-lg md:text-2xl italic m-2'>
                 {data.aboutSection.subtitle}
               </h1>
               {data.aboutSection.desc.map((info) => (

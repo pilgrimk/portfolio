@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Header, Alert, PricePlans } from '../../components'
+import { Header, Alert } from '../../components'
 import { PopupButton } from "react-calendly";
 import { data } from '../../constants'
 import helpSendEmail from '../../helpers/EmailHelper'
@@ -17,7 +17,7 @@ const Contact = () => {
   const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
-  const CALENDLY_URL = import.meta.env.VITE_CALENDLY_URL;
+  const CALENDAR_URL = import.meta.env.VITE_CALENDAR_URL;
 
   const setAlert = (severity, message) => {
     setAlertState(true);
@@ -58,32 +58,27 @@ const Contact = () => {
 
   return (
     <>
-      {(alertState) ?
-        (<Alert
+      {alertState && (
+        <Alert
           alertSeverity={alertSeverity}
           alertMessage={alertMessage}
-          onClose={() => clearAlert()} />
-        ) : (
-          <React.Fragment />
-        )}
-      <Header title={data.contactMe.title} />
+          onClose={clearAlert}
+        />
+      )}
+      <Header title={data.contactUs.title} />
       <div className='w-full flex items-center justify-center overflow-hidden'>
         <div className='max-w-5xl flex flex-col'>
-          <div className="w-full bg-accent-light-50 rounded-md p-4">
-            <div className='w-full flex flex-col gap-4'>
-              <h1 className='w-full flex items-center justify-center text-2xl font-bold'>
-                {data.pricePlanSection.title}
-              </h1>
-              {data.pricePlanSection.desc.map((desc) => (
-                <p key={shortid()}
-                  className=''>
-                  {desc}
+          <div>
+            {data.contactUs.info.map((info) => (
+              <div key={shortid.generate()}>
+                <h1 className='text-lg md:text-2xl italic m-2'>
+                  {info.title}
+                </h1>
+                <p className='m-4'>
+                  {info.desc}
                 </p>
-              ))}
-            </div>
-            <div className='my-4'>
-              <PricePlans pricePlans={data.pricePlanSection.price_plans} />
-            </div>
+              </div>
+            ))}
           </div>
           <div className="w-full bg-accent-light-50 rounded-md p-4">
             <form className='flex flex-col'
@@ -109,11 +104,7 @@ const Contact = () => {
                 </button>
                 <span className='font-semibold italic pt-4'>-- OR --</span>
                 <PopupButton
-                  url={CALENDLY_URL}
-                  /*
-                  * react-calendly uses React's Portal feature (https://reactjs.org/docs/portals.html) to render the popup modal. As a result, you'll need to
-                  * specify the rootElement property to ensure that the modal is inserted into the correct domNode.
-                  */
+                  url={CALENDAR_URL}
                   rootElement={document.getElementById("root")}
                   text="Click to Schedule!"
                   className="self-center bg-accent-dark-500 hover:bg-accent-dark-300

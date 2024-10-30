@@ -1,8 +1,15 @@
 import images from '../constants/images'
 
+const companyName = {
+  name_long: 'KAP Enterprises',
+  name_short: 'KAP',
+  name_legal: 'KAP Enterprises LLC'
+}
+
 const heroSection = {
-  title: "Let's Elevate Your Online Presence",
-  subtitle: `Your partner in crafting a successful digital presence`,
+  title: 'Empowering Businesses with AI Automation & Custom Websites.',
+  subtitle: 'Transforming operations and enhancing online presence for small and medium-sized businesses.',
+  desc: 'We specialize in crafting innovative solutions to help businesses automate and grow. From AI-powered automation systems to beautifully designed websites, we provide custom tools that allow you to work smarter and engage customers more effectively.'
 };
 
 const navlinks = [
@@ -11,40 +18,45 @@ const navlinks = [
     link_to: 'home'
   },
   {
-    link_title: 'About',
-    link_to: 'about'
+    link_title: 'Automations',
+    link_to: 'automations'
   },
   {
-    link_title: 'Projects',
-    link_to: 'projects'
-  },
+    link_title: 'Websites',
+    link_to: 'websites'
+  },  
+  {
+    link_title: 'About',
+    link_to: 'about'
+  },  
   {
     link_title: 'Contact',
     link_to: 'contact'
   },
 ];
 
-const contactMe = {
-  title: 'Contact Me',
+const contactUs = {
+  title: 'Contact Us',
+  name_long: `${companyName.name_long}`,
+  name_short: `${companyName.name_short}`,
   first_name: 'Kevin',
   last_name: 'Pilgrim',
-  full_name: 'Kevin Pilgrim',
-  name_short: 'KPilgrim',
+  full_name: 'Kevin Pilgrim',  
   street: 'PO Box 3573',
   city: 'Scottsdale',
   state: 'Arizona',
   state_short: 'AZ',
   postal: '85271',
   mobile: '801-759-9947',
-  email: 'pilgrimka1@yahoo.com',
+  email: 'kevin@kap-enterprises-llc.com',
   social_media: [
     {
       title: 'Facebook',
-      link: 'https://www.facebook.com/kevin.pilgrim.184/'
+      link: 'https://www.facebook.com/profile.php?id=61565148474498&mibextid=LQQJ4d/'
     },
     {
       title: 'Instagram',
-      link: 'https://www.instagram.com/kevin.pilgrim.184/'
+      link: 'https://www.instagram.com/kap_enterprises_22/'
     },
     {
       title: 'Twitter',
@@ -54,6 +66,16 @@ const contactMe = {
       title: 'LinkedIn',
       link: 'https://www.linkedin.com/in/kevinpilgrim/'
     }
+  ],
+  info: [
+    {
+      title: `Get in Touch with Us!`,
+      desc: `We’d love to hear from you! Whether you have questions about our services, need more information, or are ready to explore how KAP Enterprises can help elevate your business, feel free to reach out. Simply fill out the Contact Us form below, and our team will respond promptly to assist you with your inquiries. Your feedback and ideas are invaluable to us as we strive to provide the best solutions for your needs.`
+    },
+    {
+      title: `Schedule Your Free Consultation`,
+      desc: `Ready to take the next step? Click the "Schedule" button to book a free consultation at your convenience. During this one-on-one session, we'll discuss your business goals and how our services can help you achieve them. This is a great opportunity to explore custom solutions tailored specifically for you, so don’t hesitate—let’s connect and start your journey toward success today!`
+    }    
   ]
 }
 
@@ -68,25 +90,90 @@ const aboutSection = {
   ],
 }
 
-const projectsSection = {
-  title: 'Projects',
+const automationsSection = {
+  title: 'AI Automations',
+  subtitle: 'Transforming Business with AI Automation',
+  video_src: 'https://www.youtube.com/embed/6QIvOvcv7hM',
+  video_desc: `Discover how ${companyName.name_long}’ custom AI automation transforms prospect management! This video demonstrates a sample automated CRM system, built with Airtable, Make.com, and ChatGPT, guiding you through prospect intake, meeting scheduling, proposal sending, and project management handoff. See how our tailored AI workflows help small and medium-sized businesses save time and streamline operations. Watch to learn more about boosting productivity!`,
+  key_benefits: {
+    title: `Why Choose AI Automation with ${companyName.name_long}`,
+    desc:`Unlock the power of AI to streamline your business operations and enhance productivity. With AI-driven automation, your business can reduce time-consuming manual tasks, allowing your team to focus on what they do best. By automating processes like data entry, client outreach, and project management transitions, we help you create a seamless workflow that saves time and minimizes errors. Our AI automations are built to personalize each interaction, engage clients with timely, relevant communications, and organize your data securely in real-time. Plus, these solutions are scalable, meaning they grow and adapt alongside your business, giving you a flexible and sustainable edge in your market.`,
+    benefits: [
+      { 
+        name: `Increased Efficiency`,
+        desc: `Save time with automated processes.`
+      },
+      {
+        name: `Personalized Engagement`,
+        desc: `AI-driven communication tailored to each prospect.`
+      },
+      {
+        name: `Improved Data Management`,
+        desc: `Real-time updates and centralized data`
+      },
+      {
+        name: `Scalable Solutions`,
+        desc: `Automations that grow with your business.`
+      }
+    ]
+  },
+  how_it_works: {
+    title: `How It Works`,
+    desc: [
+      `At ${companyName.name_long}, we specialize in building AI-driven automation solutions tailored to meet the unique needs of small and medium-sized businesses. Our automation process combines advanced tools and technologies to streamline a variety of workflows, from CRM systems and email campaigns to social media content management and video production. By leveraging platforms like Make.com, Airtable, and Cal.com, we automate data flow and task coordination, seamlessly connecting different parts of your business.`,
+      `Each AI solution we create is designed to handle the heavy lifting—whether it's personalizing client communications, automating cold email outreach, or generating on-brand social media content. Our integrations with ChatGPT enable smart, responsive interactions and personalized messaging across multiple channels. Additionally, we use specialized tools like PandaDoc for document automation and workflow tracking, so every proposal or contract can be managed efficiently. With KAP Enterprises’ automation systems, you gain the ability to optimize operations, boost engagement, and focus on strategic growth, knowing your repetitive tasks are handled by intelligent, custom-built workflows.`,
+      `Examples of systems that we've built include: `
+    ],
+    automations: [
+      { 
+        name: `CRM System`,
+        desc: `AI-powered CRM systems streamline client management from initial contact to project handoff. Automated workflows handle data entry, personalized outreach, and status updates, ensuring a seamless, organized process for tracking and nurturing client relationships.`
+      },
+      {
+        name: `Social Media Content System`,
+        desc: `Our Social Media Content automation keeps your channels active and engaging. With AI-driven scheduling, content generation, and targeted posting, this system ensures consistent, on-brand communication with your audience across platforms—saving time and increasing engagement.`
+      },
+      {
+        name: `Cold Email Campaign System`,
+        desc: `AI-powered automation handles outreach campaigns with ease, generating personalized email sequences designed to engage prospects. With AI-driven insights, the system can customize messages, track responses, and help turn cold leads into warm opportunities, boosting the efficiency of your marketing efforts.`
+      },
+      {
+        name: `Travel Blog Content System`,
+        desc: `For travel-focused businesses, our content automation generates SEO-optimized blog posts tailored to your audience's interests. By combining AI writing tools and scheduled publishing, we provide fresh, valuable content that drives engagement and enhances your brand's online presence.`
+      },
+      {
+        name: `AI-Driven Video Generation System`,
+        desc: `Our video generation system leverages AI to create tailored video content, perfect for marketing, education, or client engagement. From scriptwriting to video editing, this automation simplifies production, making high-quality video content accessible without extensive time or resources.`
+      }
+    ]
+  },
+  call_to_action: {
+    title: `Ready to Transform Your Business?`,
+    desc: `Unlock new levels of efficiency and growth with ${companyName.name_long}’ custom AI automation solutions. Whether you're looking to streamline client management, enhance your marketing, or simplify content creation, our tailored systems are designed to fit your unique needs. Book a free consultation with us to discuss how our AI-driven workflows can automate the tasks holding you back, freeing up your team to focus on what they do best. Let’s talk about how automation can empower your business to thrive!`
+  }
+}
+
+const websitesSection = {
+  title: 'Websites',
+  subtitle: 'Boost Your Business',
+  desc: 'Engage and Convert: Our websites are built to engage visitors and convert them into loyal customers. With responsive designs and seamless functionality, we ensure a great user experience on any device. Invest in a website that works as hard as you do.',  
   projects: [
     {
-      title: 'Movies Preview',
+      title: 'Epik Mill And Cabinet',
       sub_title: '',
-      url: 'https://movies-preview-kp.netlify.app',
-      imgUrl: images.movies_preview_app,
-      img_alt: 'movies preview',
-      desc: 'A full-stack personal project that utilized a RESTful API movie database to display upcoming movies allowing users to search, review and rate their preferences.',
-      tech: 'React, JavaScript, ASP.Net RESTful API, Firebase Auth',
-    },
+      url: 'https://epikmillandcabinet.com/',
+      imgUrl: images.epik_mill_and_cabinet,
+      img_alt: 'epik mill and cabinet',
+      desc: `A live informational site built for a client who needed an internet presence for his custom cabinetry company, demonstrating services offered.`,
+      tech: 'React, JavaScript, Email.JS, Cloudinary',
+    },    
     {
       title: 'Kiss Analog',
       sub_title: '',
       url: 'https://kiss-analog-test.netlify.app/',
       imgUrl: images.kiss_analog,
       img_alt: 'kiss analog',
-      desc: 'A full-stack test site built for a friend that utilized a RESTful API and MongoDB for his electronic component review site with active blog posts.',
+      desc: `A full-stack test site that utilized a RESTful API and MongoDB for client's electronic component review site with active blog posts.`,
       tech: 'React, JavaScript, ASP.Net RESTful API, MongoDB',
     },
     {
@@ -95,7 +182,7 @@ const projectsSection = {
       url: 'https://cssconstructionllc.com/',
       imgUrl: images.css_construction_llc,
       img_alt: 'css construction',
-      desc: 'A live informational site built for a close friend who needed an internet presence for his construction company, demonstrating services offered.',
+      desc: `A live informational site built for a client who needed an internet presence for his construction company, demonstrating services offered.`,
       tech: 'React, JavaScript, Cloudinary',
     },
     {
@@ -104,7 +191,7 @@ const projectsSection = {
       url: 'https://faith-peak-performance.com/',
       imgUrl: images.peak_performance,
       img_alt: 'peak performance',
-      desc: 'A live informational site built for a close friend who needed an internet presence for her personal training gym, demonstrating services offered.',
+      desc: `A live informational site built for a client who needed an internet presence for her personal training gym, demonstrating services offered.`,
       tech: 'React, JavaScript, Cloudinary',
     },
     {
@@ -113,17 +200,8 @@ const projectsSection = {
       url: 'https://northbeachschutzhundclub.com/',
       imgUrl: images.dogs_playing,
       img_alt: 'dogs',
-      desc: 'A live informational site built for a close friend who needed an internet presence for their schutzhund club, intruducing the club along with upcoming events.',
+      desc: `A live informational site built for a client who needed an internet presence for their schutzhund club, intruducing the club along with upcoming events.`,
       tech: 'React, JavaScript',
-    },
-    {
-      title: 'Open AI Dall-E Clone',
-      sub_title: '',
-      url: 'https://dalle-clone-client.netlify.app/',
-      imgUrl: images.dall_e,
-      img_alt: 'dall-e clone',
-      desc: 'A YouTube lesson project that allows users to personally prompt a Dall-E AI image generator engine and then display and/ or store the output image.',
-      tech: 'React, JavaScript, OpenAI, Express, MongoDB, Cloudinary',
     },
     {
       title: 'Gericht Restaurant',
@@ -131,7 +209,7 @@ const projectsSection = {
       url: 'https://gericht-restaurent-test.netlify.app/',
       imgUrl: images.gericht,
       img_alt: 'restaurant',
-      desc: 'A YouTube lesson project that demonstates an informational site for a sample high end restaurant.',
+      desc: `An informational site for a sample high end restaurant.`,
       tech: 'React, JavaScript',
     },
     {
@@ -140,17 +218,8 @@ const projectsSection = {
       url: 'https://ecomm-test-kp.netlify.app/',
       imgUrl: images.ecomm,
       img_alt: 'eComm',
-      desc: 'A YouTube lesson project that demonstates an eCommerce site where users may use Stripe credit card processing to purchase products.',
+      desc: `An eCommerce site where users may use Stripe credit card processing to purchase products.`,
       tech: 'React, JavaScript, Stripe Payment Processing',
-    },
-    {
-      title: 'Home Service Groups',
-      sub_title: '',
-      url: 'https://homeservicegroups.com/',
-      imgUrl: images.home_service_groups,
-      img_alt: 'home service',
-      desc: 'A personal project that allows users to upload .HAR files from Zillow or Redfin and then display available properties with purchase information on a display map.',
-      tech: 'React, JavaScript, ASP.Net RESTful API, MapBox',
     }
   ],
 };
@@ -266,11 +335,8 @@ const workHistorySection = {
 };
 
 const pricePlanSection = {
-  title: 'Boost Your Business',
-  desc: [
-    'Engage and Convert: Our websites are built to engage visitors and convert them into loyal customers. With responsive designs and seamless functionality, we ensure a great user experience on any device. Invest in a website that works as hard as you do.',
-    'Contact me today and lets get started on creating or updating your online presence!',
-  ],
+  title: 'Affordable Pricing',
+  desc: `${companyName.name_long} offers a range of website development packages designed to meet the unique needs of businesses at any stage. Whether you're looking for a streamlined starter site, a fully customized online presence, or an advanced e-commerce platform, our tiered packages let you choose a solution that aligns with your goals and budget. Each package includes expert design, seamless functionality, and responsive support to ensure your website not only looks great but also delivers a top-tier user experience. Explore our options below to find the ideal package for your business.`,
   price_plans: [
     {
       name: 'Basic',
@@ -332,14 +398,22 @@ const pricePlanSection = {
   ]
 } 
 
+const payments = {
+  title: 'Payments',
+  subtitle: ''
+}
+
 const data = {
   heroSection,
   navlinks,
   aboutSection,
-  projectsSection,
+  automationsSection,
+  websitesSection,
   workHistorySection,
-  contactMe,
+  contactUs,
   pricePlanSection,
+  companyName,
+  payments
 };
 
 export default data;

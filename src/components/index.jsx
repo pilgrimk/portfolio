@@ -5,6 +5,7 @@ import Pagination from './pagination/Pagination'
 import PricePlans from './price-plans/PricePlans'
 import ProjectCard from './project-card/ProjectCard'
 import WorkHistory from './workhistory/WorkHistory'
+import ScrollToTop from './scroll-to-top/ScrollToTop'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 
@@ -16,6 +17,7 @@ export {
     PricePlans,
     ProjectCard,
     WorkHistory,
+    ScrollToTop,
     Header,
     Footer,
 }
