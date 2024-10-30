@@ -8,6 +8,11 @@ const Payments = () => {
     const [alertMessage, setAlertMessage] = useState('');
     const [paymentResponse, setPaymentResponse] = useState(null);
 
+    // State for form fields
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [paymentAmount, setPaymentAmount] = useState('');
+
     const setAlert = (severity, message) => {
         setAlertState(true);
         setAlertSeverity(severity);
@@ -27,11 +32,17 @@ const Payments = () => {
     };
 
     const handlePayment = () => {
+        console.log('handlePayment, entry');
+        clearAlert();
+        
+        if (!firstName || !lastName || !paymentAmount) {
+            return setAlert('error', 'Please fill in all required fields.');
+        }
+
         window.Accept.dispatchData(authData, responseHandler);
     };
 
     const responseHandler = (response) => {
-        // console.log(response);
         if (response.messages.resultCode === "Ok") {
             console.log("Payment successful:", response);
             setPaymentResponse(response); // Store response if needed
@@ -66,16 +77,53 @@ const Payments = () => {
                 />
             )}
             <Header title={data.payments.title} />
-            <form id="paymentForm">
-                <button
-                    type="button"
-                    id="paymentButton"
-                    className="AcceptUI"
-                    onClick={handlePayment}
-                >
-                    Pay Now
-                </button>
-            </form>
+            <div className='w-full flex items-center justify-center overflow-hidden'>
+                <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
+                    <form id="paymentForm">
+                        <div className="mb-4">
+                            <label htmlFor="firstName" className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                required
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="lastName" className="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                required
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="paymentAmount" className="block text-gray-700 text-sm font-bold mb-2">Payment Amount</label>
+                            <input
+                                type="number"
+                                id="paymentAmount"
+                                value={paymentAmount}
+                                onChange={(e) => setPaymentAmount(e.target.value)}
+                                required
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+                            />
+                        </div>
+                        <button
+                            type="button"
+                            id="paymentButton"
+                            className="AcceptUI bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:ring focus:ring-blue-300"
+                            onClick={handlePayment}
+                        >
+                            Pay Now
+                        </button>
+                    </form>
+                </div>
+            </div>
         </>
     );
 };

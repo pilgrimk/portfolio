@@ -19,10 +19,10 @@ const Home = () => {
         >
           <div className='w-full flex flex-col items-center justify-center'>
             <div>
-              <h1 className='text-4xl text-white p-4 italic underline font-serif'>
+              <h1 className='text-2xl md:text-4xl text-white p-4 italic underline font-serif'>
                 {data.heroSection.title}
               </h1>
-              <h2 className='text-xl text-white p-4'>
+              <h2 className='md:text-xl text-white p-4'>
                 {data.heroSection.subtitle}
               </h2>
               <p className='text-white p-4'>
@@ -30,7 +30,7 @@ const Home = () => {
               </p>
             </div>
           </div>
-          <div className='w-full flex flex-row items-center justify-center pb-8 gap-6'>
+          <div className='w-full flex flex-col sm:flex-row items-center justify-center pb-8 gap-6'>
             <button
               onClick={() => handleNavigate('/automations')}
               className='bg-accent-dark-500 hover:bg-accent-dark-300
