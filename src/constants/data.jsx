@@ -400,7 +400,8 @@ const pricePlanSection = {
 
 const payments = {
   title: 'Payments',
-  subtitle: ''
+  subtitle: 'Secure Payment Capability',
+  desc: `At ${companyName.name_long}, your security is our priority. We’ve implemented trusted and secure payment processing to protect your information. Your payment details are encrypted and processed through a secure network to ensure confidentiality and peace of mind. Rest assured that your transaction is handled with the highest standards of security.`,
 }
 
 const data = {

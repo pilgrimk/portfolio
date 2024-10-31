@@ -12,6 +12,7 @@ const Payments = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [paymentAmount, setPaymentAmount] = useState('');
+    const [postalCode, setPostalCode] = useState('');
 
     const setAlert = (severity, message) => {
         setAlertState(true);
@@ -34,8 +35,8 @@ const Payments = () => {
     const handlePayment = () => {
         console.log('handlePayment, entry');
         clearAlert();
-        
-        if (!firstName || !lastName || !paymentAmount) {
+
+        if (!firstName || !lastName || !paymentAmount || !postalCode) {
             return setAlert('error', 'Please fill in all required fields.');
         }
 
@@ -77,7 +78,15 @@ const Payments = () => {
                 />
             )}
             <Header title={data.payments.title} />
-            <div className='w-full flex items-center justify-center overflow-hidden'>
+            <div className='w-full flex flex-col items-center justify-center overflow-hidden'>
+                <div className='max-w-xl'>
+                    <h1 className='text-lg md:text-2xl italic m-2'>
+                        {data.payments.subtitle}
+                    </h1>
+                    <p className='m-4'>
+                        {data.payments.desc}
+                    </p>
+                </div>
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
                     <form id="paymentForm">
                         <div className="mb-4">
@@ -109,6 +118,17 @@ const Payments = () => {
                                 id="paymentAmount"
                                 value={paymentAmount}
                                 onChange={(e) => setPaymentAmount(e.target.value)}
+                                required
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <label htmlFor="postalCode" className="block text-gray-700 text-sm font-bold mb-2">Postal Code</label>
+                            <input
+                                type="number"
+                                id="postalCode"
+                                value={postalCode}
+                                onChange={(e) => setPostalCode(e.target.value)}
                                 required
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
                             />

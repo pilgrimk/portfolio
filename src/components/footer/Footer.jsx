@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   BsFacebook,
   BsInstagram,
@@ -42,6 +43,7 @@ const Footer = () => {
           <p>{data.contactUs.full_name}</p>
           <p>{data.contactUs.street}</p>
           <p>{data.contactUs.city}, {data.contactUs.state_short}, {data.contactUs.postal}</p>
+          <p>Click <Link className='italic underline text-blue-500' to="/payments">here</Link> to make a payment!</p>
         </div>
         <div className='text-white text-lg p-8 text-center md:text-left'>
           <p>Phone: {data.contactUs.mobile}</p>
