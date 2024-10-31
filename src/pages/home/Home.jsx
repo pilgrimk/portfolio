@@ -11,10 +11,10 @@ const Home = () => {
 
   return (
     <>
-      <div className="bg-screen-bg lg:bg-screen-lg bg-fixed bg-cover min-h-[100vh] sm:min-h-[80vh]">
+      <div className="bg-screen-bg lg:bg-screen-lg bg-fixed bg-cover min-h-[120vh] sm:min-h-[80vh]">
         <div
           id='title-box'
-          className='absolute top-[55%] transform -translate-y-1/2 bg-accent-light-800 w-4/5 max-w-[1000px] rounded-md p-4'
+          className='absolute top-[65%] sm:top-[55%] transform -translate-y-1/2 bg-accent-light-800 w-4/5 max-w-[1000px] rounded-md p-4'
         // className='absolute top-[55%] right-0 transform -translate-y-1/2 translate-x-[0%] bg-accent-light-800 w-4/5 max-w-[1200px] rounded-md p-4'
         >
           <div className='w-full flex flex-col items-center justify-center'>
