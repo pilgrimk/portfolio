@@ -13,6 +13,7 @@ const Payments = () => {
     const [lastName, setLastName] = useState('');
     const [paymentAmount, setPaymentAmount] = useState('');
     const [postalCode, setPostalCode] = useState('');
+    const [memo, setMemo] = useState('');
 
     const setAlert = (severity, message) => {
         setAlertState(true);
@@ -133,6 +134,17 @@ const Payments = () => {
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
                             />
                         </div>
+                        <div className="mb-4">
+                            <label htmlFor="memo" className="block text-gray-700 text-sm font-bold mb-2">Memo</label>
+                            <input
+                                type="text"
+                                id="memo"
+                                value={memo}
+                                onChange={(e) => setMemo(e.target.value)}
+                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
+                            />
+                            <p className='text-sm'>*Include Invoice Number here, if available</p>
+                        </div>                        
                         <button
                             type="button"
                             id="paymentButton"
