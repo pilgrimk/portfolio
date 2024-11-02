@@ -3,18 +3,30 @@ import { Header, Alert } from '../../components';
 import { data } from '../../constants';
 
 const Payments = () => {
+    // 13. State for managing alert visibility, severity, and message
     const [alertState, setAlertState] = useState(false);
     const [alertSeverity, setAlertSeverity] = useState('');
     const [alertMessage, setAlertMessage] = useState('');
-    const [paymentResponse, setPaymentResponse] = useState(null);
 
-    // State for form fields
+    // 14. State for payment form fields
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [paymentAmount, setPaymentAmount] = useState('');
-    const [postalCode, setPostalCode] = useState('');
+    const [zip, setZip] = useState('');
     const [memo, setMemo] = useState('');
+    const [token, setToken] = useState(null); // Holds the payment token from API
 
+    //  SANDBOX URL values
+    const AUTH_TOKEN_SERVER_URL = 'http://localhost:5000/get-token';
+    const ACCEPTUI_URL = 'https://jstest.authorize.net/v1/AcceptUI.js';
+    const AUTH_PAYMENT_URL = 'https://test.authorize.net/payment/payment';
+
+    //  PRODUCTION URL values
+    // const AUTH_TOKEN_SERVER_URL = 'http://localhost:5000/get-token';
+    // const ACCEPTUI_URL = 'https://jstest.authorize.net/v1/AcceptUI.js';
+    // const AUTH_PAYMENT_URL = 'https://test.authorize.net/payment/payment';
+
+    // 15. Helper function to set and display alert message
     const setAlert = (severity, message) => {
         setAlertState(true);
         setAlertSeverity(severity);
@@ -22,45 +34,52 @@ const Payments = () => {
         window.scrollTo(0, 0);
     };
 
+    // 16. Clears any existing alert
     const clearAlert = () => {
         setAlertState(false);
         setAlertSeverity('');
         setAlertMessage('');
     };
 
-    const authData = {
-        apiLoginID: import.meta.env.VITE_API_LOGIN_ID,
-        clientKey: import.meta.env.VITE_API_CLIENT_KEY,
-    };
-
-    const handlePayment = () => {
-        console.log('handlePayment, entry');
+    // 17. Handles payment token request and manages success/failure response
+    const handlePayment = async () => {
         clearAlert();
 
-        if (!firstName || !lastName || !paymentAmount || !postalCode) {
-            return setAlert('error', 'Please fill in all required fields.');
+        // Validates required fields
+        if (!firstName || !lastName || !paymentAmount) {
+            setAlert('error', 'Please fill in all required fields.');
+            return;
         }
 
-        window.Accept.dispatchData(authData, responseHandler);
-    };
+        try {
+            // 18. Requests token from server
+            const response = await fetch(AUTH_TOKEN_SERVER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ firstName, lastName, zip, memo, amount: paymentAmount }),
+            });
 
-    const responseHandler = (response) => {
-        if (response.messages.resultCode === "Ok") {
-            console.log("Payment successful:", response);
-            setPaymentResponse(response); // Store response if needed
-            setAlert('success', 'Payment processed successfully!');
-        } else {
-            console.error("Payment failed:", response.messages.message[0].text);
-            setAlert('error', response.messages.message[0].text);
+            const data = await response.json();
+
+            // 19. Handles token response
+            if (data.success) {
+                setToken(data.token);
+                setAlert('success', 'Token received successfully!');
+            } else {
+                setAlert('error', `Error: ${data.message}`);
+            }
+        } catch (error) {
+            setAlert('error', 'Error fetching payment token.');
+            console.error(error);
         }
     };
 
+    // 20. Adds the Authorize.net script for AcceptUI when component mounts
     useEffect(() => {
         clearAlert();
 
-        // Load Accept.js script
         const script = document.createElement('script');
-        script.src = "https://jstest.authorize.net/v3/AcceptUI.js";
+        script.src = ACCEPTUI_URL;
         script.async = true;
         document.body.appendChild(script);
 
@@ -68,6 +87,30 @@ const Payments = () => {
             document.body.removeChild(script);
         };
     }, []);
+
+    // 21. Dynamically creates and submits a form with the token to Authorize.net so that user do not need to have another screen to redirect to the payment screen
+    const submitFormVirtually = (token) => {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = AUTH_PAYMENT_URL;
+
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'token';
+        input.value = token;
+
+        form.appendChild(input);
+        document.body.appendChild(form);
+        form.submit();
+        document.body.removeChild(form);
+    };
+
+    // 22. Submits form automatically if token is set
+    useEffect(() => {
+        if (token) {
+            submitFormVirtually(token);
+        }
+    }, [token]);
 
     return (
         <>
@@ -89,7 +132,8 @@ const Payments = () => {
                     </p>
                 </div>
                 <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 max-w-md w-full">
-                    <form id="paymentForm">
+                    <form>
+                        {/* Payment form fields */}
                         <div className="mb-4">
                             <label htmlFor="firstName" className="block text-gray-700 text-sm font-bold mb-2">First Name</label>
                             <input
@@ -124,12 +168,12 @@ const Payments = () => {
                             />
                         </div>
                         <div className="mb-4">
-                            <label htmlFor="postalCode" className="block text-gray-700 text-sm font-bold mb-2">Postal Code</label>
+                            <label htmlFor="zip" className="block text-gray-700 text-sm font-bold mb-2">Postal Code</label>
                             <input
                                 type="number"
-                                id="postalCode"
-                                value={postalCode}
-                                onChange={(e) => setPostalCode(e.target.value)}
+                                id="zip"
+                                value={zip}
+                                onChange={(e) => setZip(e.target.value)}
                                 required
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
                             />
@@ -143,12 +187,11 @@ const Payments = () => {
                                 onChange={(e) => setMemo(e.target.value)}
                                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring focus:ring-blue-500"
                             />
-                            <p className='text-sm'>*Include Invoice Number here, if available</p>
-                        </div>                        
+                            <p className='text-[.8rem] font-medium text-gray-600'>*Include Invoice Number here, if available</p>
+                        </div>
                         <button
                             type="button"
-                            id="paymentButton"
-                            className="AcceptUI bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:ring focus:ring-blue-300"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:ring focus:ring-blue-300"
                             onClick={handlePayment}
                         >
                             Pay Now
