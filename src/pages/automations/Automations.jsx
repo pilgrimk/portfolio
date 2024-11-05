@@ -40,8 +40,8 @@ const Automations = () => {
                         <ul className='list-disc mx-12'>
                             {data.automationsSection.key_benefits.benefits.map((benefit) => (
                                 <li key={shortid.generate()}>
-                                    <span>{benefit.name}</span>
-                                    <p className='font-thin italic mb-2'>{benefit.desc}</p>
+                                    <span className='font-bold text-accent-dark-500'>{benefit.name}</span>
+                                    <p className='italic mb-2'>{benefit.desc}</p>
                                 </li>
                             ))}
                         </ul>
@@ -59,8 +59,8 @@ const Automations = () => {
                         <ul className='list-disc mx-12'>
                             {data.automationsSection.how_it_works.automations.map((automation) => (
                                 <li key={shortid.generate()}>
-                                    <span>{automation.name}</span>
-                                    <p className='font-thin italic mb-2'>{automation.desc}</p>
+                                    <span className='font-bold text-accent-dark-500'>{automation.name}</span>
+                                    <p className='italic mb-2'>{automation.desc}</p>
                                 </li>
                             ))}
                         </ul>
