@@ -18,8 +18,13 @@ const Payments = () => {
 
     // URL values
     const AUTH_TOKEN_SERVER_URL = 'http://pilgrimk-001-site4.ptempurl.com/payment/get-token';
-    const ACCEPTUI_URL = 'https://jstest.authorize.net/v1/AcceptUI.js';
-    const AUTH_PAYMENT_URL = 'https://test.authorize.net/payment/payment';
+    // *** TESTING URL **********************
+    // const ACCEPTUI_URL = 'https://jstest.authorize.net/v1/AcceptUI.js';
+    // const AUTH_PAYMENT_URL = 'https://test.authorize.net/payment/payment';
+    // *** PRODUCTION URL ********************
+    const ACCEPTUI_URL = 'https://js.authorize.net/v1/AcceptUI.js';
+    const AUTH_PAYMENT_URL = 'https://secure.authorize.net/payment/payment';  
+    // **********************************  
 
     // 15. Helper function to set and display alert message
     const setAlert = (severity, message) => {
