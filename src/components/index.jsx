@@ -6,6 +6,8 @@ import PricePlans from './price-plans/PricePlans'
 import ProjectCard from './project-card/ProjectCard'
 import WorkHistory from './workhistory/WorkHistory'
 import ScrollToTop from './scroll-to-top/ScrollToTop'
+import PopupButton from './popup-button/PopupButton'
+import Modal from './modal/Modal'
 import Header from './header/Header'
 import Footer from './footer/Footer'
 
@@ -18,6 +20,8 @@ export {
     ProjectCard,
     WorkHistory,
     ScrollToTop,
+    PopupButton,
+    Modal,
     Header,
     Footer,
 }

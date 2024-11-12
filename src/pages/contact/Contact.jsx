@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Header, Alert } from '../../components'
-import { PopupButton } from "react-calendly";
+import { Header, Alert, PopupButton } from '../../components'
 import { data } from '../../constants'
 import helpSendEmail from '../../helpers/EmailHelper'
 import shortid from 'shortid'
@@ -11,13 +10,11 @@ const Contact = () => {
   const [alertSeverity, setAlertSeverity] = useState('');
   const [alertMessage, setAlertMessage] = useState('');
 
-  const form = useRef();
-  const emailRef = useRef();
-
-  const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID;
-  const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID;
-  const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY;
-  const CALENDAR_URL = import.meta.env.VITE_CALENDAR_URL;
+  // Use refs to access input fields directly
+  const userNameRef = useRef();
+  const userEmailRef = useRef();
+  const userPhoneRef = useRef();
+  const messageRef = useRef();
 
   const setAlert = (severity, message) => {
     setAlertState(true);
@@ -32,22 +29,43 @@ const Contact = () => {
     setAlertMessage('');
   };
 
-  const sendEmail = async (e) => {
-    e.preventDefault();
+  const validateFields = () => {
+    // Check if any of the fields are empty
+    if (!userNameRef.current.value || !userEmailRef.current.value || !userPhoneRef.current.value || !messageRef.current.value) {
+        return false; // Return false if any field is empty
+    }
+    return true; // Return true if all fields are filled
+  }
 
+  const clearFormFields = () => {
+    // Clear the input fields
+    userNameRef.current.value = '';
+    userEmailRef.current.value = '';
+    userPhoneRef.current.value = '';
+    messageRef.current.value = '';
+  };
+
+  const sendEmail = async () => {
+    // console.log('sendEmail, entry'); 
     clearAlert();
+
+    if (!validateFields()) {
+      setAlert('error', 'You must complete required fields.');
+      return;
+    }
+
     setSending(true);
 
-    const formData = new FormData(form.current);
-    const userName = formData.get('user_name');
-    const userEmail = formData.get('user_email');
-    const userPhone = formData.get('user_phone');
-    const message = formData.get('message');
+    // Collect input values using refs
+    const userName = userNameRef.current.value;
+    const userEmail = userEmailRef.current.value;
+    const userPhone = userPhoneRef.current.value;
+    const message = messageRef.current.value;
 
     let response = await helpSendEmail(userName, userEmail, userPhone, message);
 
     if (response === 'Success') {
-      e.target.reset();
+      clearFormFields(); // Clear form fields after successful email send
       setAlert('success', 'Email sent successfully!');
     } else {
       setAlert('error', response);
@@ -81,38 +99,27 @@ const Contact = () => {
             ))}
           </div>
           <div className="w-full bg-accent-light-50 rounded-md p-4">
-            <form className='flex flex-col'
-              ref={form}
-              onSubmit={sendEmail}>
+            <div className='flex flex-col'>
               <label className='py-2 font-medium'>Name</label>
-              <input className='border-2 rounded-md' type="text" name="user_name" required />
+              <input ref={userNameRef} className='border-2 rounded-md' type="text" name="user_name" />
               <label className='py-2 font-medium'>Email</label>
-              <input className='border-2 rounded-md' type="email" name="user_email" ref={emailRef} required />
+              <input ref={userEmailRef} className='border-2 rounded-md' type="email" name="user_email" />
               <label className='py-2 font-medium'>Phone</label>
-              <input className='border-2 rounded-md' type="phone" name="user_phone" required />
+              <input ref={userPhoneRef} className='border-2 rounded-md' type="phone" name="user_phone" />
               <label className='py-2 font-medium'>Message</label>
-              <textarea className='min-h-40 border-2 rounded-md p-2' name="message" required />
-              <div className='flex flex-row items-center justify-center gap-8'>
-                <button
-                  className="self-center bg-accent-dark-500 hover:bg-accent-dark-300
-                text-white font-bold mt-4 py-2 px-4 
-                border accent-dark-900 rounded"
-                  type="submit"
-                  value="Send"
-                  disabled={sending}>
-                  Send an Email!
-                </button>
-                <span className='font-semibold italic pt-4'>-- OR --</span>
-                <PopupButton
-                  url={CALENDAR_URL}
-                  rootElement={document.getElementById("root")}
-                  text="Click to Schedule!"
-                  className="self-center bg-accent-dark-500 hover:bg-accent-dark-300
-               text-white font-bold mt-4 py-2 px-4 
-               border accent-dark-900 rounded"
-                />
-              </div>
-            </form>
+              <textarea ref={messageRef} className='min-h-40 border-2 rounded-md p-2' name="message" />
+            </div>
+            <div className='flex flex-row items-center justify-center gap-8 mt-4'>
+              <button
+                className="self-center bg-accent-dark-500 hover:bg-accent-dark-300 text-white font-bold py-2 px-4 border accent-dark-900 rounded"
+                type="button"
+                onClick={sendEmail} // Call sendEmail on click
+                disabled={sending}>
+                Send an Email!
+              </button>
+              <span className='font-semibold italic pt-4'>-- OR --</span>
+              <PopupButton text="Click to Schedule!" />
+            </div>
           </div>
         </div>
       </div>
@@ -120,4 +127,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default Contact;
