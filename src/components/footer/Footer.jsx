@@ -43,6 +43,15 @@ const Footer = () => {
           <p>{data.contactUs.full_name}</p>
           <p>{data.contactUs.street}</p>
           <p>{data.contactUs.city}, {data.contactUs.state_short}, {data.contactUs.postal}</p>
+          <br />
+          <p>
+            Click <a
+              className='italic underline text-blue-500'
+              href={data.contactUs.customer_support_link}
+              target="_blank"
+              rel="noopener noreferrer"
+            >here</a> to submit a ticket!
+          </p>          
           <p>Click <Link className='italic underline text-blue-500' to="/payments">here</Link> to make a payment!</p>
         </div>
         <div className='text-white text-lg p-8 text-center md:text-left'>

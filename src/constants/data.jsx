@@ -76,7 +76,8 @@ const contactUs = {
       title: `Schedule Your Free Consultation`,
       desc: `Ready to take the next step? Click the "Schedule" button to book a free consultation at your convenience. During this one-on-one session, we'll discuss your business goals and how our services can help you achieve them. This is a great opportunity to explore custom solutions tailored specifically for you, so don’t hesitate—let’s connect and start your journey toward success today!`
     }    
-  ]
+  ],
+  customer_support_link: 'https://airtable.com/appKniIyLgmj8YOQy/pagsJJDuXUcgpGxZz/form',
 }
 
 const aboutSection = {
@@ -144,7 +145,11 @@ const automationsSection = {
       {
         name: `AI-Driven Video Generation System`,
         desc: `Our video generation system leverages AI to create tailored video content, perfect for marketing, education, or client engagement. From scriptwriting to video editing, this automation simplifies production, making high-quality video content accessible without extensive time or resources.`
-      }
+      },
+      {
+        name: `Customer Service Automation System`,
+        desc: `Enhance your customer support with AI-powered ticket management. Customers can easily submit tickets detailing their technical issues, and the system automates timely, personalized email responses. With advanced tracking capabilities, each ticket is monitored from submission to resolution, ensuring a streamlined and transparent support process that keeps your customers informed and satisfied.`
+      }      
     ]
   },
   call_to_action: {
