@@ -12,7 +12,7 @@ const PopupButton = ({ text }) => {
         <>
             <button
                 onClick={openModal}
-                className="self-center bg-accent-dark-500 hover:bg-accent-dark-300 text-white font-bold mt-4 py-2 px-4 border accent-dark-900 rounded"
+                className="my-2 sm:my-4 py-2 px-4 bg-accent-dark-500 hover:bg-accent-dark-300 text-white font-bold border accent-dark-900 rounded"
             >
                 {text}
             </button>

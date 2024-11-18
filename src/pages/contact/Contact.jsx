@@ -32,7 +32,7 @@ const Contact = () => {
   const validateFields = () => {
     // Check if any of the fields are empty
     if (!userNameRef.current.value || !userEmailRef.current.value || !userPhoneRef.current.value || !messageRef.current.value) {
-        return false; // Return false if any field is empty
+      return false; // Return false if any field is empty
     }
     return true; // Return true if all fields are filled
   }
@@ -109,15 +109,15 @@ const Contact = () => {
               <label className='py-2 font-medium'>Message</label>
               <textarea ref={messageRef} className='min-h-40 border-2 rounded-md p-2' name="message" />
             </div>
-            <div className='flex flex-row items-center justify-center gap-8 mt-4'>
+            <div className='flex flex-col sm:flex-row items-center justify-center gap-8 mt-4'>
               <button
-                className="self-center bg-accent-dark-500 hover:bg-accent-dark-300 text-white font-bold py-2 px-4 border accent-dark-900 rounded"
+                className="my-2 sm:my-4 py-2 px-4 bg-accent-dark-500 hover:bg-accent-dark-300 text-white font-bold border accent-dark-900 rounded"
                 type="button"
                 onClick={sendEmail} // Call sendEmail on click
                 disabled={sending}>
                 Send an Email!
               </button>
-              <span className='font-semibold italic pt-4'>-- OR --</span>
+              <span className='font-semibold italic'>-- OR --</span>
               <PopupButton text="Click to Schedule!" />
             </div>
           </div>
