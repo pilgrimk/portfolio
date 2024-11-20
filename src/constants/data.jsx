@@ -48,7 +48,7 @@ const contactUs = {
   state_short: 'AZ',
   postal: '85271',
   mobile: '801-759-9947',
-  email: 'kevin@kap-enterprises-llc.com',
+  email: 'kpilgrim@kap-enterprises-llc.com',
   social_media: [
     {
       title: 'Facebook',
