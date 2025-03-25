@@ -127,6 +127,10 @@ const automationsSection = {
     ],
     automations: [
       { 
+        name: `Email Management System`,
+        desc: `Our AI-powered Email Management System streamlines your inbox by categorizing new unread emails and intelligently generating draft responses within the thread. Using your company-specific knowledge base, this system ensures accurate, context-aware replies, reducing response time and improving communication efficiency. By automating email triage and drafting, your team can focus on high-value interactions while maintaining a fast, professional, and consistent email workflow.`
+      },      
+      { 
         name: `CRM System`,
         desc: `AI-powered CRM systems streamline client management from initial contact to project handoff. Automated workflows handle data entry, personalized outreach, and status updates, ensuring a seamless, organized process for tracking and nurturing client relationships.`
       },
@@ -233,6 +237,27 @@ const workHistorySection = {
   title: "Selected Work History",
   work_history: [
     {
+      title: "Founder/Automation Engineer",
+      sub_title: "",
+      company: "KAP Enterprises",
+      address1: "PO Box 3573",
+      city: "Scottsdale",
+      state: "AZ",
+      postal: "85271",
+      hire_dates: "2024 - Pres",
+      experience: [
+        "Founded KAP Enterprises to provide AI-driven automation solutions tailored for small and medium-sized businesses (SMBs), focusing on efficiency, cost reduction, and scalability.",
+        "Designed and deployed multiple automation systems, including AI-powered CRM, Social Media Content Automation, Cold Email Campaigns, AI-Driven Video Generation, and Customer Service Automation.",
+        "Developed a proprietary Email Management System that categorizes unread emails and drafts intelligent responses using company-specific knowledge bases.",
+        "Implemented AI and no-code platforms such as Make.com, Airtable, ChatGPT, and automation workflows to streamline business processes and enhance customer engagement.",
+        "Conducted in-depth consultations with business owners to assess automation needs and implement scalable solutions that reduce manual workload and improve productivity.",
+        "Managed end-to-end automation projects, from initial client discovery and solution design to system integration and ongoing optimization.",
+        "Expanded lead generation efforts through AI-powered cold email campaigns, increasing outreach efficiency and improving conversion rates.",
+        "Created and maintained an internal knowledge base and automation templates, enabling rapid deployment of new solutions for clients across various industries.",
+        "Oversaw marketing and brand positioning for KAP Enterprises, establishing a strong online presence and driving awareness of automation benefits for SMBs."
+      ]
+    },    
+    {
       title: 'Freelance Web Developer',
       sub_title: '',
       company: 'Self-Employed',
@@ -240,7 +265,7 @@ const workHistorySection = {
       city: 'Scottsdale',
       state: 'AZ',
       postal: '85271',
-      hire_dates: '2022 - Pres',
+      hire_dates: '2022 - 2024',
       experience: [
         'Designed, developed, and deployed multiple professional websites meeting client specifications and deadlines',
         'Collaborated closely with clients to understand their vision and deliver tailored solutions that exceed expectations',
