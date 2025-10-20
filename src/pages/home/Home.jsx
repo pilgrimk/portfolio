@@ -38,13 +38,13 @@ const Home = () => {
                 border accent-dark-900 rounded'>
               Automations
             </button>
-            <button
+            {/* <button
               onClick={() => handleNavigate('/websites')}
               className='bg-accent-dark-500 hover:bg-accent-dark-300
                 text-white font-bold mt-4 py-2 px-4 
                 border accent-dark-900 rounded'>
               Websites
-            </button>
+            </button> */}
             <button
               onClick={() => handleNavigate('/contact')}
               className='bg-accent-dark-500 hover:bg-accent-dark-300

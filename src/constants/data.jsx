@@ -7,9 +7,9 @@ const companyName = {
 }
 
 const heroSection = {
-  title: 'Empowering Businesses with AI Automation & Custom Websites.',
+  title: 'Empowering Businesses with AI Automation.',
   subtitle: 'Transforming operations and enhancing online presence for small and medium-sized businesses.',
-  desc: 'We specialize in crafting innovative solutions to help businesses automate and grow. From AI-powered automation systems to beautifully designed websites, we provide custom tools that allow you to work smarter and engage customers more effectively.'
+  desc: 'We specialize in crafting innovative solutions to help businesses automate and grow. With AI-powered automation systems, we provide custom tools that allow you to work smarter and engage customers more effectively.'
 };
 
 const navlinks = [
@@ -21,10 +21,6 @@ const navlinks = [
     link_title: 'Automations',
     link_to: 'automations'
   },
-  {
-    link_title: 'Websites',
-    link_to: 'websites'
-  },  
   {
     link_title: 'About',
     link_to: 'about'
@@ -153,7 +149,11 @@ const automationsSection = {
       {
         name: `Customer Service Automation System`,
         desc: `Enhance your customer support with AI-powered ticket management. Customers can easily submit tickets detailing their technical issues, and the system automates timely, personalized email responses. With advanced tracking capabilities, each ticket is monitored from submission to resolution, ensuring a streamlined and transparent support process that keeps your customers informed and satisfied.`
-      }      
+      },
+      {
+        name: `UGC Video Content System`,
+        desc: `Our UGC Video Content System uses AI to generate influencer-style videos and social posts tailored to your brand—without the need to hire creators or manage back-and-forth revisions. By automating script generation, voiceover, visuals, and formatting for platforms like Instagram, TikTok, YouTube, and Facebook, this system delivers ready-to-publish user-generated content at scale. It provides a cost-effective way to boost engagement, showcase social proof, and keep your brand consistently visible across multiple channels.`
+      }
     ]
   },
   call_to_action: {
